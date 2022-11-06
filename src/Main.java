@@ -1,31 +1,31 @@
 import java.util.Scanner;
-import java.util.Stack;
+import java.util.ArrayList;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Stack<String> directions = new Stack<>();
-		Stack<String> streets = new Stack<>();
+		ArrayList<String> directions = new ArrayList<>();
+		ArrayList<String> streets = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
 		
 		
 		String strt = "HOME";
 		while (!strt.equals("SCHOOL")) {
 			String dir = sc.nextLine().equals("R")?"LEFT":"RIGHT";
-			directions.push(dir);
-			streets.push(strt);
+			directions.add(dir);
+			streets.add(strt);
 			strt = sc.nextLine();
 		}
 		
-		while (!directions.isEmpty()) {
-			String dir = directions.pop();
-			strt = streets.pop();
+		for (int i=directions.size()-1;i>=0;i--) {
+			String dir = directions.get(i);
+			strt = streets.get(i);
 			
 			if (!strt.equals("HOME"))
 				System.out.println("Turn "+dir+" onto "+strt+" street.");
 			else
-				System.out.println("Turn "+dir+" into your "+strt);
+				System.out.println("Turn "+dir+" into your "+strt +".");
 			
 		}
 		
